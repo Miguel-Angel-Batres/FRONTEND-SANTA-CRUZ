@@ -84,7 +84,7 @@ app.post('/api/registro', async (req, res) => {
             createdAt: new Date().toISOString(),
         });
 
-        const confirmationLink = `http://localhost:3000/api/confirmacion?token=${confirmationToken}`;
+        const confirmationLink = `/api/confirmacion?token=${confirmationToken}`;
         await transporter.sendMail({
             from: "Tu dios chinchillas",
             to: email,
@@ -118,7 +118,7 @@ app.post('/api/recuperar-cuenta', async (req, res) => {
             createdAt: new Date().toISOString(),
         });
 
-        const resetLink = `http://localhost:3000/api/reset-password?token=${resetToken}`;
+        const resetLink = `/api/reset-password?token=${resetToken}`;
         const enviaremail = await transporter.sendMail({
             from: email, 
             to: "maesito23763446@gmail.com", 
@@ -266,7 +266,7 @@ app.get('/api/usuarios', async (_, res) => {
         res.status(500).json({ message: 'Error al obtener los usuarios' });
     }
 });
-app.get('/deportes', async (req, res) => {
+app.get('/api/deportes', async (req, res) => {
     try {
       const snapshot = await db.collection('deportes').get();
       const deportes = snapshot.docs.map(doc => doc.data());

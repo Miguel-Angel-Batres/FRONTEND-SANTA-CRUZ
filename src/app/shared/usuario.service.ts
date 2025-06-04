@@ -82,7 +82,7 @@ export class UsuarioService {
 
   async manageAttemps(email: string): Promise<void> {
     const verificarAttemps = await fetch(
-      'http://localhost:3000/api/verificar-attemps',
+      '/api/verificar-attemps',
       {
         method: 'POST',
         headers: {
@@ -107,7 +107,7 @@ export class UsuarioService {
                 const capturedEmail = email; 
                 console.log(capturedEmail);
                 const response = await fetch(
-                  'http://localhost:3000/api/recuperar-cuenta',
+                  '/api/recuperar-cuenta',
                   {
                     method: 'POST',
                     headers: {
@@ -207,7 +207,7 @@ export class UsuarioService {
   ): Promise<any> {
     try {
       const verificarEmail = await fetch(
-        'http://localhost:3000/api/verificar-email',
+        '/api/verificar-email',
         {
           method: 'POST',
           headers: {
@@ -226,7 +226,7 @@ export class UsuarioService {
         return;
       }
 
-      const response = await fetch('http://localhost:3000/api/registro', {
+      const response = await fetch('/api/registro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -294,7 +294,7 @@ export class UsuarioService {
     }
   }
   async obtenerUsuarios() {
-    fetch('http://localhost:3000/api/usuarios')
+    fetch('/api/usuarios')
       .then((response) => response.json())
       .then((data) => {
         this.usersSubject.next(data);
@@ -307,7 +307,7 @@ export class UsuarioService {
       });
   }
   obtenerPlanes(): void {
-    fetch('http://localhost:3000/api/planes')
+    fetch('/api/planes')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error al obtener los planes');
@@ -358,7 +358,7 @@ export class UsuarioService {
     console.log('Contraseña:', usuario.contraseña);
     try {
       if(usuario.contraseña!== '' && usuario.contraseña !== undefined){
-        const response = await fetch('http://localhost:3000/api/actualizar-contrasena', {
+        const response = await fetch('/api/actualizar-contrasena', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

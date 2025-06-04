@@ -76,7 +76,7 @@ app.post('/api/registro', async (req, res) => {
     const { email, password, extraData } = req.body;
     try {
         const confirmationToken = Math.random().toString(36).substring(2, 15);
-        const docRef = db.collection('pendingRegistrations').doc(confirmationToken); 
+        const docRef =db.collection('registros_pendientes').doc(confirmationToken); 
         await docRef.set({
             email,
             password,
